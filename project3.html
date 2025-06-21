@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<!--
+	George Kirima's Portfolio
+	Projects Page
+-->
+<html>
+	<head>
+		<title>George Kirima | Projects</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner"></div>
+			<a href="index.html" class="title">PROJECTS</a>
+			<nav>
+				<ul class="horizontal-menu">
+					<li><a href="project3.html" class="active">Project 3:<br>Static website on S3</a></li>
+          <li><a href="proj_overview.html" class="active">Projects Overview</a></li>
+					<li><a href="index.html">Back Home</a></li>
+					<!--<li><a href="elements.html">Elements</a></li> -->
+				</ul>
+			</nav>
+		</header>
+
+		<!-- Wrapper -->
+		<div id="wrapper">
+
+			<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="inner">
+                    <h2>Step 1: Create Your Static Website</h2>
+                    <p>Start by building your site with an <code>index.html</code> file and optional <code>styles.css</code> and <code>images/</code> folder.</p>
+                    <pre>
+/my-website
+│
+├── index.html
+├── styles.css
+└── images/
+      </pre>
+    </section>
+
+    <section>
+      <h2>Step 2: Host on GitHub Pages</h2>
+      <ol>
+        <li>Create a GitHub account and a new repository (e.g., <code>my-website</code>).</li>
+        <li>Push your project files to the repo using Git:</li>
+        <pre>
+git init
+git remote add origin https://github.com/yourusername/my-website.git
+git add .
+git commit -m "Initial commit"
+git push -u origin main
+        </pre>
+        <li>Go to <strong>Settings → Pages</strong> in your repository.</li>
+        <li>Select <code>main</code> branch and click "Save."</li>
+        <li>Your site is live at: <code>https://yourusername.github.io/my-website</code></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Step 3: Host on AWS S3 (Static Website Hosting)</h2>
+      <ol>
+        <li>Login to AWS Console and go to S3 service.</li>
+        <li>Create a new bucket (e.g., <code>my-static-site</code>).</li>
+        <li>Uncheck "Block all public access" during bucket creation.</li>
+        <li>Enable static website hosting in bucket <strong>Properties</strong>.</li>
+        <li>Upload your files (<code>index.html</code>, etc.) to the bucket.</li>
+        <li>Add the following Bucket Policy to allow public access:</li>
+        <pre>
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::my-static-site/*"
+    }
+  ]
+}
+        </pre>
+        <li>Access your website using the S3 endpoint URL provided.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Step 4: (Optional) Point a Custom Domain</h2>
+      <ol>
+        <li>Register a domain via Route 53 or any registrar.</li>
+        <li>Create an alias or CNAME record to your S3 endpoint (or GitHub Pages).</li>
+        <li>Use Amazon Certificate Manager (ACM) for HTTPS (if using CloudFront).</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>You're Live!</h2>
+      <p>Congratulations! Your static site is now live and accessible to the public.</p>
+    </section>
+					
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer" class="wrapper alt">
+			<div class="inner">
+				<ul class="menu">
+					<li>&copy; 2025 George Kirima. All rights reserved.</li>
+					<li>Portfolio: <a href="https://kirimageorge-portfolio.s3.us-west-2.amazonaws.com/index.html" target="_blank" rel="noopener noreferrer">Visit Portfolio</a></li>
+				</ul>
+			</div>
+		</footer>
+	</body>
+</html>
+<!-- Compare this snippet from two.html: -->

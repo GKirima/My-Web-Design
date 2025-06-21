@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<!--
+	George Kirima's Portfolio
+	Projects Page - Project 2
+-->
+<html>
+	<head>
+		<title>George Kirima | Project 2: 3-Tier Architecture</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+				</div>
+				<a href="index.html" class="title">PROJECTS</a>
+				<nav>
+					<ul class="horizontal-menu">
+						<li><a href="project2.html" class="active">Project 2:<br>3-Tier Architecture</a></li>
+						<li><a href="proj_overview.html" class="active">Projects Overview</a></li>
+						<li><a href="index.html">Back Home</a></li>
+						<!--<li><a href="elements.html">Elements</a></li> -->
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Project 2: Building a Secure 3-Tier Architecture on AWS 🌐</h1>
+							<span class="image fit"><img src="images/3 Tier Architecture.jpg" alt="3-tier architecture diagram" /></span>
+
+							<p><b>Overview:</b><br>
+							This project showcases the deployment of a classic 3-tier architecture on AWS, designed for scalability, high availability, and security. The architecture separates the presentation, application logic, and data layers across different network tiers.</p>
+
+							<p><b>1. VPC and Subnet Setup:</b><br>
+							- Create a VPC with CIDR block 10.0.0.0/16.<br>
+							- Create 6 subnets across 2 Availability Zones:<br>
+								• 2 Public Subnets (Web Layer)<br>
+								• 2 Private Subnets (App Layer)<br>
+								• 2 Private Subnets (DB Layer)</p>
+
+							<p><b>2. Internet Gateway and NAT Gateway:</b><br>
+							- Attach an Internet Gateway to allow public internet access for web tier.<br>
+							- Set up a NAT Gateway in public subnet for private subnets to access the internet securely.</p>
+
+							<p><b>3. Route Tables:</b><br>
+							- Create route tables and associate them appropriately with each subnet.<br>
+							- Public subnets route 0.0.0.0/0 to Internet Gateway.<br>
+							- Private subnets route 0.0.0.0/0 to NAT Gateway (for app layer).</p>
+
+							<p><b>4. Security Groups:</b><br>
+							- Web SG: Allow HTTP/HTTPS from the internet, SSH from admin IP.<br>
+							- App SG: Allow traffic only from Web SG.<br>
+							- DB SG: Allow traffic only from App SG on port 3306 (MySQL).</p>
+
+							<p><b>5. Launch EC2 Instances:</b><br>
+							- Web Layer: EC2s in public subnets (Apache/Nginx).<br>
+							- App Layer: EC2s in private subnets (Node.js, Python, etc).<br>
+							- DB Layer: Amazon RDS in DB subnets (Multi-AZ enabled).</p>
+
+							<p><b>6. Load Balancing and Auto Scaling:</b><br>
+							- Use an Application Load Balancer for the Web Tier.<br>
+							- Configure Auto Scaling Group for the web and app tiers.<br>
+							- Health checks and target groups configured for each tier.</p>
+
+							<p><b>7. Database Configuration:</b><br>
+							- Amazon RDS (MySQL/PostgreSQL) deployed in the DB tier.<br>
+							- Enabled Multi-AZ for high availability and automatic failover.<br>
+							- DB security group restricted to App layer only.</p>
+
+							<p><b>8. Monitoring and Logging:</b><br>
+							- Enable CloudWatch for instance, application, and database monitoring.<br>
+							- Enable VPC flow logs for traffic auditing.<br>
+							- Configure alarms and dashboards for key metrics (CPU, latency, etc).</p>
+
+							<p><b>9. Testing:</b><br>
+							- Test load balancer from browser.<br>
+							- Verify application logic works between tiers.<br>
+							- Confirm no direct access to the app or DB layer from the public internet.</p>
+
+							<p><b>10. Conclusion:</b><br>
+							This architecture enables modular deployment, ease of scaling, and layered security. It's ideal for modern web applications requiring isolation and availability.</p>
+
+							<hr>
+							<h2>💡 Pro Tips:</h2>
+							<ul>
+								<li>Always place databases in private subnets.</li>
+								<li>Use IAM roles to grant permissions instead of hardcoding credentials.</li>
+								<li>Use CloudFormation or Terraform to automate infrastructure deployment.</li>
+								<li>Enable termination protection for critical instances and databases.</li>
+								<li>Regularly review security group rules and enable least privilege access.</li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; 2025 George Kirima. All rights reserved.</li>
+						<li>Portfolio: <a href="https://kirimageorge-portfolio.s3.us-west-2.amazonaws.com/index.html" target="_blank" rel="noopener noreferrer">Visit Portfolio</a></li>
+					</ul>
+				</div>
+			</footer>
+	</body>
+</html>

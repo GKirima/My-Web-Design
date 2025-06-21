@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<!--
+	George Kirima's Portfolio
+	Projects Page
+-->
+<html>
+	<head>
+		<title>George Kirima  | Projects</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+				</div>
+				<a href="index.html" class="title">PROJECTS</a>
+				<nav>
+					<ul class="horizontal-menu">
+						<li><a href="project1.html" class="active">Project 1:<br>
+							 VPC & EC2 via CLI</a></li>
+						<li><a href="proj_overview.html" class="active">Projects Overview</a></li>
+						<li><a href="index.html">Back Home</a></li>
+						<!--<li><a href="elements.html">Elements</a></li> -->
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Project 1: Deploying a VPC and Launching an EC2 Instance on AWS Using CLI 🚀</h1>
+							<span class="image fit"><img src="images/aws vpc.jpg" alt="" /></span>
+							<p>
+								<b>1.First, configure AWS CLI access:</b><br>
+									# aws configure <br>
+									# Enter your AWS Access Key ID,<br>
+									# Enter your AWS Secret Access Key#<br>
+									# Enter your preferred region<br>
+									# Enter output format (json recommended).
+							</p>
+							<p>
+								<b>2. Create VPC with CIDR 10.0.0.0/22:</b><br>
+								 aws ec2 create-vpc --cidr-block 10.0.0.0/22 --tag-specifications 'ResourceType=vpc,Tags=[{Key=Name,Value=MyVPC}]'<br>								 
+								 # Save the VPC ID from output for future use
+							</p>
+							<p>
+								<b>3. Create Internet Gateway and attach to VPC:</b><br>
+								 aws ec2 create-internet-gateway --tag-specifications 'ResourceType=internet-gateway,Tags=[{Key=Name,Value=MyIGW}]'<br>
+							aws ec2 attach-internet-gateway --vpc-id #vpc-id# --internet-gateway-id #igw-id# #igw-id#</p>
+							<p>
+								<b>4. Create 4 subnets (2 public, 2 private):</b><br>
+								Public Subnet 1 (10.0.0.0/24)<br>
+								aws ec2 create-subnet --vpc-id #vpc-id# --cidr-block 10.0.0/24 --availability-zone us-east-1a --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=PublicSubnet1}]'<br>
+								Public Subnet 2 (10.0.1.0/24)<br>
+								aws ec2 create-subnet --vpc-id #vpc-id# --cidr-block 10.0.1/24 --availability-zone us-east-1b --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=PublicSubnet2}]'<br>	
+								Private Subnet 1 (10.0.2.0/24)<br>
+								aws ec2 create-subnet --vpc-id #vpc-id# --cidr-block 10.0.2/24 --availability-zone us-east-1a --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=PrivateSubnet1}]'<br>
+								Private Subnet 2 (10.0.3.0/24)<br>
+								aws ec2 create-subnet --vpc-id #vpc-id# --cidr-block 10.0.3/24 --availability-zone us-east-1b --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=PrivateSubnet2}]'<br>
+							</p>
+							<p>
+								<b>5. Create route tables and associate with public subnets:</b><br>
+								Public Route Table:<br>
+								aws ec2 create-route-table --vpc-id #vpc-id# --tag-specifications 'ResourceType=route-table,Tags=[{Key=Name,Value=PublicRouteTable}]'<br>
+								Private Route Table:<br>
+								aws ec2 create-route-table --vpc-id #vpc-id# --tag-specifications 'ResourceType=route-table,Tags=[{Key=Name,Value=PrivateRouteTable}]'<br>
+								Associate Public Route Table with Public Subnet 1:<br>
+								aws ec2 create-route --route-table-id #rt-id# --destination-cidr-block 0.0.0.0/0 --gateway-id #igw-id#<br>
+								aws ec2 associate-route-table --subnet-id #public-subnet-1-id# --route-table-id #public-route-table-id#<br>
+								Associate Public Route Table with Public Subnet 2:<br>
+								aws ec2 associate-route-table --subnet-id #public-subnet-2-id# --route-table-id #public-route-table-id#<br>
+							</p>
+							<p>
+								<b>6. Create security groups:</b><br>
+								Public Security Group:<br>
+								aws ec2 create-security-group --group-name PublicSG --description "Public Security Group" --vpc-id #vpc-id#<br>
+								aws ec2 authorize-security-group-ingress --group-id #public-sg-id# --protocol tcp --port 22 --cidr #your-ip/32#<br>
+								aws ec2 authorize-security-group-ingress --group-id #public-sg-id# --protocol tcp --port 80 --cidr 0.0.0.0/0<br>
+								aws ec2 authorize-security-group-ingress --group-id #public-sg-id# --protocol tcp --port 443 --cidr 0.0.0.0/0<br>
+								Private Security Group:<br>
+								aws ec2 create-security-group --group-name PrivateSG --description "Private Security Group" --vpc-id #vpc-id#<br>
+							</p>
+							<p>
+								<b>7. Launch EC2 instances:</b><br>
+								Public EC2 Instance in Public Subnet 1:<br>
+								aws ec2 run-instances --image-id ami-12345678 --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids #public-sg-id# --subnet-id #public-subnet-1-id#<br>
+								Public EC2 Instance in Public Subnet 2:<br>
+								aws ec2 run-instances --image-id ami-12345678 --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids #public-sg-id# --subnet-id #public-subnet-2-id#<br>
+								Private EC2 Instance in Private Subnet 1:<br>
+								aws ec2 run-instances --image-id ami-12345678 --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids #private-sg-id# --subnet-id #private-subnet-1-id#<br>
+								Private EC2 Instance in Private Subnet 2:<br>
+								aws ec2 run-instances --image-id ami-12345678 --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids #private-sg-id# --subnet-id #private-subnet-2-id#<br>
+							</p>
+							<p>
+								<b>8. Verify deployment:</b><br>
+								- Check VPC, subnets, and route tables in the AWS Management Console.<br>
+								- Ensure public instances can access the internet and private instances can communicate with public instances.<br>
+								- Test connectivity using SSH or HTTP from public instances to private instances. 
+							</p>
+							<p>
+								<b>9. Clean up resources:</b><br>
+								- Terminate EC2 instances.<br>
+								- Delete security groups.<br>
+								- Detach and delete the Internet Gateway.<br>
+								- Delete subnets and route tables.<br>
+								- Finally, delete the VPC.
+							</p>
+							<p>
+								<b>10. Conclusion:</b><br>
+								This project demonstrates how to deploy a secure and scalable AWS VPC architecture using the AWS CLI. It covers VPC creation, subnet configuration, security group management, and EC2 instance deployment.<br>
+								<hr>
+								<h2>💡 Pro Tips:</h2>
+								<ul>
+									<li>Always tag your AWS resources for easier management and cost tracking.</li>
+									<li>Use parameter variables or scripts to automate repetitive CLI tasks.</li>
+									<li>Double-check your region and availability zones to avoid deployment errors.</li>
+									<li>Regularly review your security group rules to maintain least privilege access.</li>
+									<li>Consider using AWS CloudFormation or Terraform for infrastructure as code in larger projects.</li>
+								</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; 2025 George Kirima.  All rights reserved.</li>
+						<li>Portfolio: <a href="https://kirimageorge-portfolio.s3.us-west-2.amazonaws.com/index.html" target="_blank" rel="noopener noreferrer">Visit Portfolio</a></li>
+					</ul>
+				</div>
+			</footer>
