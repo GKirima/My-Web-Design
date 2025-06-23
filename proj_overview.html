@@ -62,11 +62,14 @@
 									<h2>Project 1</h2>
 									<h3>Automated EC2 Deployment Pipeline Using AWS CodePipeline and GitHub.</h3>
 									<p>
-										Architecture Overview:<br>
-										<img src="images/EC2_CodePipeline.jpg" alt="EC2 CodePipeline" style="width: 250px; height: auto; float: right; margin: 10px;">
-
+										Architecture Overview:
+										<!--<img src="images/EC2_CodePipeline.jpg" alt="EC2 CodePipeline" style="width: 250px; height: auto; float: right; margin: 10px;"> -->
 									</p>
 									<p>This project outlines an automated deployment pipeline using AWS CodePipeline, CodeDeploy, and GitHub to deliver application scripts to Amazon EC2 instances. This solution enables continuous delivery from a GitHub repository to Amazon EC2 instances with zero manual deployment steps.</p>
+									<p>
+										<img src="images/EC2_CodePipeline.jpg" alt="EC2 CodePipeline" style="width: 380px; height: auto; float: right; margin: 10px;">
+									</p>
+									
 									<p>The GitHub repository contains two critical files: These files are packaged together and passed through our deployment pipeline automatically.The compute layer has EC2 instances configured with AmazonSSMManagedInstanceCore for secure Systems Manager access and Inline policies that grant s3:GetObject access to retrieve artifacts</p>
 									<p>AWS CodePipeline orchestrates the flow - The CodePipeline service role has been updated with the required IAM permissions to integrate with GitHub,S3, CloudWatch Logs, and CodeDeploy. CodeDeploy: Locates the EC2 targets and deploys files to /home/ec2-user/testhelloworld and Executes script.sh using the AfterInstall hook.</p>
 									<p>From the user’s perspective, the process is seamless:- Within minutes, the latest changes are deployed securely and automatically to production. This architecture enables secure, auditable, and repeatable deployments using AWS-native tools and promotes best practices in continuous delivery.</p>
