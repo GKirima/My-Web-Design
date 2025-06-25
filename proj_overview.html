@@ -35,61 +35,55 @@
 			<section id="two" class="wrapper style3 fade-up">
 				<div class="inner">
 					<h2>Hands-on – AWS Cloud Projects 🚀</h2>
-					<p>Leveraging practical knowledge of cloud technologies to design and deploy scalable, secure, and cost-optimized infrastructure solutions.</p>
-					<p>
-						Here are some of my key projects that showcase my expertise in AWS cloud solutions, including VPC deployments, secure architectures, and legacy migrations. Each project highlights my ability to design, implement, and manage cloud environments effectively.
+					<p>Leveraging practical knowledge of cloud technologies to design and deploy scalable, secure, and cost-optimized infrastructure solutions.<br>
+						Here are some of my key projects that showcase my expertise in AWS cloud solutions, including VPC deployments, secure architectures, and legacy migrations.<br> Each project highlights my ability to design, implement, and manage cloud environments effectively.
 					</p>
-							<h2>Project 1</h2>
-							<h3>Automated EC2 Deployment Pipeline Using AWS CodePipeline and GitHub.</h3>
-							<h4>Architecture Overview:</h4>
-							<p>This project outlines an automated deployment pipeline using AWS CodePipeline, CodeDeploy, and GitHub to deliver application scripts to Amazon EC2 instances. This solution enables continuous delivery from a GitHub repository to Amazon EC2 instances with zero manual deployment steps.</p>
-							<img src="images/EC2_CodePipeline.jpg" alt="EC2 CodePipeline"
-								style="width: 420px; height: auto; display: block; margin: 20px auto;">
-							<p>The GitHub repository contains two critical files: These files are packaged together and passed through our deployment pipeline automatically.The compute layer has EC2 instances configured with AmazonSSMManagedInstanceCore for secure Systems Manager access and Inline policies that grant s3:GetObject access to retrieve artifacts</p>
-							<p>AWS CodePipeline orchestrates the flow - The CodePipeline service role has been updated with the required IAM permissions to integrate with GitHub,S3, CloudWatch Logs, and CodeDeploy. CodeDeploy: Locates the EC2 targets and deploys files to /home/ec2-user/testhelloworld and Executes script.sh using the AfterInstall hook.</p>
-							<p>From the user’s perspective, the process is seamless:- Within minutes, the latest changes are deployed securely and automatically to production. This architecture enables secure, auditable, and repeatable deployments using AWS-native tools and promotes best practices in continuous delivery.<br>
-								Click on the Learn  more button below to view the project details and implementation steps.
-							</p>
-							<ul class="actions">
-								<li><a href="project1.html" class="button">Learn more</a></li>
-							</ul>
-						</div>
-					<div class="content">
-						<div class="inner">
-							<h2>Project 2</h2>
-							<p>Deploying a Secure 3-Tier Architecture in AWS.</p>
-							<img src="images/prof.jpg" alt="EC2 CodePipeline"
-							style="width: 420px; height: auto; display: block; margin: 20px auto;">
+							<div style="overflow: hidden;">
+	<img src="images/EC2_CodePipeline.jpg" alt="EC2 CodePipeline"
+		style="width: 320px; height: auto; float: right; margin: 0 0 1.5em 2em; border-radius: 0.5em;" />
 
-							<p>A practical implementation of a three-tier web architecture using Amazon VPC, EC2, RDS, and Load Balancer. This project focuses on high availability, network isolation, and secure access between tiers.</p>
-							<ul class="actions">
-								<li><a href="Project2.html" class="button">Learn more</a></li>
-							</ul>
-						</div>
-					</div>
-				</section>
-				<section>
-					
-					
-					<div class="content">
-						<div class="inner">
-							<h2>Project 3</h2>
-							<img src="images/amz1.jpg" alt="EC2 CodePipeline">
-								style="width: 420px; height: auto; display: block; margin: 20px auto;">
-								
-							<p>Project 3: Migrating a Legacy Architecture to AWS.</p>
-							<p>
-								This project involves migrating a legacy architecture to AWS, focusing on re-architecting for cloud-native services, optimizing costs, and ensuring data integrity during the migration process.<br>
-								It outlines a step-by-step process for analyzing, planning, and migrating legacy infrastructure to the AWS Cloud. It covers rehosting (lift-and-shift), storage migration, and network configuration for minimal downtime.
-							</p>
-							<ul class="actions">
-								<li><a href="project3.html" class="button">Learn more</a></li>
-							</ul>
-						</div>
-					</div>
-				</section>
-			</section>
-		</div>
+	<h2>Project 1</h2>
+	<h3>Automated EC2 Deployment Pipeline Using AWS CodePipeline and GitHub.</h3>
+	<p>- This project outlines an automated deployment pipeline using AWS CodePipeline, CodeDeploy, and GitHub to deliver application scripts to Amazon EC2 instances. This solution enables continuous delivery from a GitHub repository to Amazon EC2 instances with zero manual deployment steps.<br>
+	- The GitHub repository contains two critical files: These files are packaged together and passed through our deployment pipeline automatically. The compute layer has EC2 instances configured with AmazonSSMManagedInstanceCore for secure Systems Manager access and Inline policies that grant s3:GetObject access to retrieve artifacts.</p>
+	<p> - AWS CodePipeline orchestrates the flow - The CodePipeline service role has been updated with the required IAM permissions to integrate with GitHub, S3, CloudWatch Logs, and CodeDeploy. CodeDeploy: Locates the EC2 targets and deploys files to /home/ec2-user/testhelloworld and executes script.sh using the AfterInstall hook.<br>
+	- From the user’s perspective, the process is seamless:- Within minutes, the latest changes are deployed securely and automatically to production. This architecture enables secure, auditable, and repeatable deployments using AWS-native tools and promotes best practices in continuous delivery.<br>
+	Click on the Learn more button below to view the project details and implementation steps.</p>
+
+	<ul class="actions">
+		<li><a href="project1.html" class="button">Learn more</a></li>
+	</ul>
+</div>
+
+						<br><div style="overflow: hidden;">
+	<img src="images/prof.jpg" alt="EC2 CodePipeline"
+		style="width: 220px; height: auto; float: left; margin: 0 2em 1.5em 0; border-radius: 0.5em;" />
+
+	<h2>Project 2</h2>
+	<h3>Deploying a Secure 3-Tier Architecture in AWS.</h3>
+	<p>A practical implementation of a three-tier web architecture using Amazon VPC, EC2, RDS, and Load Balancer. This project focuses on high availability, network isolation, and secure access between tiers.</p>
+	<ul class="actions">
+		<li><a href="Project2.html" class="button">Learn more</a></li>
+	</ul>
+</div>
+
+							<br><br>
+							<div style="overflow: hidden;">
+	<h2>Project 3</h2>
+	<h3>Project 3: Migrating a Legacy Architecture to AWS.</h3>
+
+	<img src="images/logo.jpg" alt="EC2 CodePipeline"
+		style="width: 220px; height: auto; float: right; margin: 0 0 1.5em 2em; border-radius: 0.5em;" />
+
+	<p>
+		This project involves migrating a legacy architecture to AWS, focusing on re-architecting for cloud-native services, optimizing costs, and ensuring data integrity during the migration process.<br>
+		It outlines a step-by-step process for analyzing, planning, and migrating legacy infrastructure to the AWS Cloud. It covers rehosting (lift-and-shift), storage migration, and network configuration for minimal downtime.
+	</p>
+	<ul class="actions">
+		<li><a href="project3.html" class="button">Learn more</a></li>
+	</ul>
+</div>
+
 
 		<!-- Footer -->
 		<footer id="footer" class="wrapper style1-alt">
