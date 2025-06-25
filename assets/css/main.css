@@ -3522,7 +3522,7 @@ input, select, textarea {
 
 	#sidebar {
 		padding: 2.5em 2.5em 0.5em 2.5em ;
-		background: #474746;
+		background: #36454f;
 		cursor: default;
 		height: 100vh;
 		left: 0;
@@ -3735,9 +3735,9 @@ input, select, textarea {
 			-ms-transition: color 0.2s ease;
 			transition: color 0.2s ease;
 			border: 0;
-			color: rgba(253, 254, 254, 0.35);
+			color: rgba(208, 230, 240, 1);
 			display: block;
-			font-size: 0.6em;
+			font-size: 0.8em;
 			font-weight: bold;
 			letter-spacing: 0.25em;
 			line-height: 1.75;
@@ -3759,14 +3759,14 @@ input, select, textarea {
 			}
 
 			#sidebar nav a:before {
-				background: #c39bd3;
+				background: #36454f;
 			}
 
 			#sidebar nav a:after {
-				background-image: -moz-linear-gradient(to right, #5e42a6, #b74e91);
-				background-image: -webkit-linear-gradient(to right, #5e42a6, #b74e91);
-				background-image: -ms-linear-gradient(to right, #5e42a6, #b74e91);
-				background-image: linear-gradient(to right, #5e42a6, #b74e91);
+				background-image: -moz-linear-gradient(to right, #242424, #242424);
+				background-image: -webkit-linear-gradient(to right, #242424, #242424);
+				background-image: -ms-linear-gradient(to right, #242424, #242424);
+				background-image: linear-gradient(to right, #242424, #242424);
 				-moz-transition: max-width 0.2s ease;
 				-webkit-transition: max-width 0.2s ease;
 				-ms-transition: max-width 0.2s ease;
@@ -3779,7 +3779,7 @@ input, select, textarea {
 			}
 
 			#sidebar nav a.active {
-				color: #ffffff;
+				color: #d0e6f0;
 			}
 
 				#sidebar nav a.active:after {
@@ -3855,7 +3855,7 @@ input, select, textarea {
 
 						#sidebar nav a:after {
 							background-image: none;
-							background-color: #b74e91;
+							background-color: #36454f;
 						}
 
 		}
@@ -3905,3 +3905,4 @@ input, select, textarea {
 			}
 
 		}
+
