@@ -2311,10 +2311,10 @@ input, select, textarea {
 		-webkit-appearance: none;
 		-ms-appearance: none;
 		appearance: none;
-		background: rgba(173, 20, 87, 0.05);
+		background: rgba(47, 132, 124, 0.15);
 		border-radius: 0.25em;
 		border: none;
-		border: solid 1px rgba(255, 255, 255, 0.15);
+		border: solid 1px rgba(255, 255, 255, 1);
 		color: inherit;
 		display: block;
 		outline: 0;
@@ -3238,11 +3238,11 @@ input, select, textarea {
 		}
 
 		.wrapper.style1 {
-			background-color: #B2BABB;
+			background-color: #f0e9d6;
 		}
 
 		.wrapper.style1-alt {
-			background-color: #232429;
+			background-color: #2f847c;
 		}
 
 		.wrapper.style2 {
@@ -3250,11 +3250,11 @@ input, select, textarea {
 		}
 
 		.wrapper.style2-alt {
-			background-color: #E5E8E8;
+			background-color: #f0e9d6;
 		}
 
 		.wrapper.style3 {
-			background-color: #99A3A4;
+			background-color: #f0e9d6;
 		}
 
 		.wrapper.style3-alt {
@@ -3522,7 +3522,7 @@ input, select, textarea {
 
 	#sidebar {
 		padding: 2.5em 2.5em 0.5em 2.5em ;
-		background: #36454f;
+		background: #2f847c;
 		cursor: default;
 		height: 100vh;
 		left: 0;
@@ -3735,7 +3735,7 @@ input, select, textarea {
 			-ms-transition: color 0.2s ease;
 			transition: color 0.2s ease;
 			border: 0;
-			color: rgba(208, 230, 240, 1);
+			color: rgba(241, 227, 164, 1);
 			display: block;
 			font-size: 0.8em;
 			font-weight: bold;
@@ -3759,7 +3759,7 @@ input, select, textarea {
 			}
 
 			#sidebar nav a:before {
-				background: #36454f;
+				background: #2f847c;
 			}
 
 			#sidebar nav a:after {
@@ -3779,7 +3779,7 @@ input, select, textarea {
 			}
 
 			#sidebar nav a.active {
-				color: #d0e6f0;
+				color: #f1e3a4;
 			}
 
 				#sidebar nav a.active:after {
@@ -3855,7 +3855,7 @@ input, select, textarea {
 
 						#sidebar nav a:after {
 							background-image: none;
-							background-color: #36454f;
+							background-color: #2f847c;
 						}
 
 		}
