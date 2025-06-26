@@ -44,13 +44,9 @@
 							</p>
 							<div class="split style1">
 								<section>
-									<form method="POST" action="https://formsubmit.co/kirimageorge@gmail.com" id="contact-form">
+									<form id="contact-form">
 									<h3>Contact Form</h3>
-									<!-- OPTIONAL: Prevent spam bots -->
-									 <input type="hidden" name="_captcha" value="false">
-									 <input type="hidden" name="_next" value="https://kirimamgeorge.com/formsubmit.html">
-									 <input type="hidden" name="_subject" value="New message from your website!">
-
+									
 										<div class="fields">
 											<div class="field half">
 												<label for="name">Name</label>
@@ -66,7 +62,8 @@
 											</div>
 										</div>
 										<ul class="actions">
-											<li><a href="" class="button submit">Send Message</a></li>
+											<li><button type="submit" class="button submit">Send Message</button></li>
+
 										</ul>
 									</form>
 								</section>
@@ -126,6 +123,40 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+		<!-- Custom script to handle contact form -->
+			<script>
+			document.getElementById('contact-form').addEventListener('submit', async function(e) {
+			  e.preventDefault(); // Prevent default form submission
+			
+			  const name = document.getElementById('name').value;
+			  const email = document.getElementById('email').value;
+			  const message = document.getElementById('message').value;
+			
+			  const payload = {
+			    name: name,
+			    email: email,
+			    message: message
+			  };
+			
+			  try {
+			    const response = await fetch('https://0kazt94ly1.execute-api.us-west-2.amazonaws.com/production/MySESLambda', {
+			      method: 'POST',
+			      headers: { 'Content-Type': 'application/json' },
+			      body: JSON.stringify(payload)
+			    });
+			
+			    const result = await response.json();
+			
+			    if (response.ok) {
+			      alert('✅ Message sent successfully!');
+			    } else {
+			      alert('⚠️ Error sending message: ' + result.error);
+			    }
+			  } catch (err) {
+			    alert('❌ Request failed: ' + err.message);
+			  }
+			});
+			</script>
 
 	</body>
 </html>
