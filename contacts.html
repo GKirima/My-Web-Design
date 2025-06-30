@@ -130,6 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("✅ DOM fully loaded and script is running");
 
   const form = document.getElementById("contact-form");
+
   if (!form) {
     console.error("❌ Contact form not found");
     return;
@@ -137,13 +138,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   console.log("✅ Contact form found");
 
-  const submitButton = document.querySelector(".submit");
-  if (submitButton) {
-    submitButton.addEventListener("click", () => {
-      console.log("🖱️ Button was clicked");
-    });
-  }
+  // Log on ANY click inside the form
+  form.addEventListener("click", function () {
+    console.log("🖱️ Some element inside the form was clicked");
+  });
 
+  // Now listen for the form submission
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     console.log("📨 Form submitted");
@@ -153,33 +153,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const message = document.getElementById("message").value;
 
     console.log("🔎 Collected values:", { name, email, message });
-
-    // You can re-enable this part once debug confirms POST works:
-    /*
-    fetch('https://0kazt94ly1.execute-api.us-west-2.amazonaws.com/production/MySESLambda', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, message })
-    })
-    .then(response => response.json())
-    .then(result => {
-      if (response.ok) {
-        alert('✅ Message sent successfully!');
-      } else {
-        alert('⚠️ Error sending message: ' + result.error);
-      }
-    })
-    .catch(err => {
-      alert('❌ Request failed: ' + err.message);
-    });
-    */
   });
 });
 </script>
-
-
-
-
-
 </body>
 </html>
