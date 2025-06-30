@@ -153,9 +153,30 @@ document.addEventListener("DOMContentLoaded", function () {
     const message = document.getElementById("message").value;
 
     console.log("🔎 Collected values:", { name, email, message });
+
+    // You can re-enable this part once debug confirms POST works:
+    /*
+    fetch('https://0kazt94ly1.execute-api.us-west-2.amazonaws.com/production/MySESLambda', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, message })
+    })
+    .then(response => response.json())
+    .then(result => {
+      if (response.ok) {
+        alert('✅ Message sent successfully!');
+      } else {
+        alert('⚠️ Error sending message: ' + result.error);
+      }
+    })
+    .catch(err => {
+      alert('❌ Request failed: ' + err.message);
+    });
+    */
   });
 });
 </script>
+
 
 
 
