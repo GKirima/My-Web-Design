@@ -1,33 +1,41 @@
-document.getElementById('contact-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("✅ DOM fully loaded and script is running");
 
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const message = document.getElementById('message').value;
+    const form = document.getElementById("contact-form");
 
-  console.log("🔎 Collected values:", { name, email, message });
+    if (form) {
+      console.log("✅ Contact form found");
 
-  if (!name || !email || !message) {
-    alert("Please fill all the fields.");
-    return;
-  }
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        console.log("📨 Form submitted");
 
-  const payload = { name, email, message };
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
 
-  try {
-    const response = await fetch('https://0kazt94ly1.execute-api.us-west-2.amazonaws.com/production/MySESLambda', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+        console.log("🔎 Collected values:", { name, email, message });
 
-    if (response.ok) {
-      alert('✅ Message sent successfully!');
+        const payload = { name, email, message };
+
+        try {
+          const response = await fetch('https://0kazt94ly1.execute-api.us-west-2.amazonaws.com/production/MySESLambda', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+
+          if (response.ok) {
+            alert('✅ Message sent successfully!');
+          } else {
+            const result = await response.json();
+            alert('⚠️ Error sending message: ' + result.error);
+          }
+        } catch (err) {
+          alert('❌ Request failed: ' + err.message);
+        }
+      });
     } else {
-      const result = await response.json();
-      alert('⚠️ Error sending message: ' + result.error);
+      console.log("❌ Contact form not found.");
     }
-  } catch (err) {
-    alert('❌ Request failed: ' + err.message);
-  }
 });
