@@ -126,22 +126,37 @@
 			<script src="assets/js/main.js"></script>
 		<!-- Custom script to handle contact form -->
 			<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById('contact-form');
-    
-    if (!form) {
-      console.error("❌ Contact form not found");
-      return;
-    }
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("✅ DOM fully loaded and script is running");
 
-    console.log("✅ Contact form found");
+  const form = document.getElementById("contact-form");
+  if (!form) {
+    console.error("❌ Contact form not found");
+    return;
+  }
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      console.log("📨 Form submitted");
+  console.log("✅ Contact form found");
+
+  const submitButton = document.querySelector(".submit");
+  if (submitButton) {
+    submitButton.addEventListener("click", () => {
+      console.log("🖱️ Button was clicked");
     });
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    console.log("📨 Form submitted");
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    console.log("🔎 Collected values:", { name, email, message });
   });
+});
 </script>
+
 
 
 
