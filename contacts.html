@@ -50,15 +50,15 @@
 										<div class="fields">
 											<div class="field half">
 												<label for="name">Name</label>
-												<input type="text" name="name" id="name" required />
+												<input type="text" name="name" autocomplete="name" required />
 											</div>
 											<div class="field half">
 												<label for="email">Email</label>
-												<input type="text" name="email" id="email" required />
+												<input type="text" name="email" autocomplete="email" required />
 											</div>
 											<div class="field">
 												<label for="message">Message</label>
-												<textarea name="message" id="message" rows="5" required></textarea>
+												<textarea name="message" id="message" rows="5" autocomplete="off" required></textarea>
 											</div>
 										</div>
 										<ul class="actions">
@@ -156,5 +156,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+<script>
+alert("✅ If you see this alert, the custom script is running.");
+</script>
+
 </body>
 </html>
