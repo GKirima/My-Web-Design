@@ -126,22 +126,22 @@
 		<!-- Custom script to handle contact form -->
 			<script>
   document.addEventListener("DOMContentLoaded", function () {
-    console.log("✅ DOM fully loaded and script is running");
-
     const form = document.getElementById('contact-form');
+    
     if (!form) {
       console.error("❌ Contact form not found");
       return;
     }
 
+    console.log("✅ Contact form found");
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       console.log("📨 Form submitted");
-
-      // rest of your logic (no need to resend here yet)
     });
   });
 </script>
+
 
 
 </body>
