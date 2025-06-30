@@ -9,6 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script defer src="assets/js/contact-form.js"></script>
 	</head>
 	<body class="is-preload">
 
@@ -50,11 +51,11 @@
 										<div class="fields">
 											<div class="field half">
 												<label for="name">Name</label>
-												<input type="text" name="name" autocomplete="name" required />
+												<input type="text" name="name" autocomplete="name" required title="Please enter your full name" placeholder="Your Name" />
 											</div>
 											<div class="field half">
 												<label for="email">Email</label>
-												<input type="text" name="email" autocomplete="email" required />
+												<input type="text" name="email" autocomplete="email" required title="Please enter your email address" placeholder="you@example.com" />
 											</div>
 											<div class="field">
 												<label for="message">Message</label>
@@ -124,41 +125,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-		<!-- Custom script to handle contact form -->
-			<script>
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("✅ DOM fully loaded and script is running");
-
-  const form = document.getElementById("contact-form");
-
-  if (!form) {
-    console.error("❌ Contact form not found");
-    return;
-  }
-
-  console.log("✅ Contact form found");
-
-  // Log on ANY click inside the form
-  form.addEventListener("click", function () {
-    console.log("🖱️ Some element inside the form was clicked");
-  });
-
-  // Now listen for the form submission
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    console.log("📨 Form submitted");
-
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
-
-    console.log("🔎 Collected values:", { name, email, message });
-  });
-});
-</script>
-<script>
-alert("✅ If you see this alert, the custom script is running.");
-</script>
+		
 
 </body>
 </html>

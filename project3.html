@@ -3,11 +3,11 @@
 	George Kirima's Portfolio
 	Projects Page
 -->
-<html>
+<html lang="en">
 	<head>
 		<title>George Kirima | Projects</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
@@ -48,14 +48,15 @@
       <h2>Step 2: Host on GitHub Pages</h2>
       <ol>
         <li>Create a GitHub account and a new repository (e.g., <code>my-website</code>).</li>
-        <li>Push your project files to the repo using Git:</li>
-        <pre>
+        <li>Push your project files to the repo using Git:
+          <pre>
 git init
 git remote add origin https://github.com/yourusername/my-website.git
 git add .
 git commit -m "Initial commit"
 git push -u origin main
-        </pre>
+          </pre>
+        </li>
         <li>Go to <strong>Settings → Pages</strong> in your repository.</li>
         <li>Select <code>main</code> branch and click "Save."</li>
         <li>Your site is live at: <code>https://yourusername.github.io/my-website</code></li>
@@ -63,15 +64,14 @@ git push -u origin main
     </section>
 
     <section>
-      <h2>Step 3: Host on AWS S3 (Static Website Hosting)</h2>
       <ol>
         <li>Login to AWS Console and go to S3 service.</li>
         <li>Create a new bucket (e.g., <code>my-static-site</code>).</li>
         <li>Uncheck "Block all public access" during bucket creation.</li>
         <li>Enable static website hosting in bucket <strong>Properties</strong>.</li>
         <li>Upload your files (<code>index.html</code>, etc.) to the bucket.</li>
-        <li>Add the following Bucket Policy to allow public access:</li>
-        <pre>
+        <li>Add the following Bucket Policy to allow public access:
+          <pre>
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -84,8 +84,10 @@ git push -u origin main
     }
   ]
 }
-        </pre>
+          </pre>
+        </li>
         <li>Access your website using the S3 endpoint URL provided.</li>
+      </ol>
       </ol>
     </section>
 
@@ -108,12 +110,12 @@ git push -u origin main
 		<!-- Footer -->
 		<footer id="footer" class="wrapper alt">
 			<div class="inner">
-				<ul class="menu"style="list-style: none; padding: 0; text-align: center; font-family: inherit;">
-						<li><a href="index.html" style="font-size: 0.8em; color: #f1e5ac; text-transform: capitalize;">Home</a></li>
-						<li><a href="about_me.html" style="font-size: 0.8em; color: #f1e5ac; text-transform: capitalize;">About</a></li>
-						<li><a href="contacts.html" style="font-size: 0.8em; color: #f1e5ac; text-transform: capitalize;">Contact</a></li><br>
-						<li style="font-size: 0.8em; color: #f1e5ac; margin-top: 1em;">&copy; 2025 George Kirima. All rights reserved.</li>
-					</ul>
+        <ul class="menu">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about_me.html" class="footer-link">About</a></li>
+            <li><a href="contacts.html" class="footer-link">Contact</a></li>
+            <li class="footer-copyright">&copy; 2025 George Kirima. All rights reserved.</li>
+          </ul>
 			</div>
 		</footer>
 	</body>
