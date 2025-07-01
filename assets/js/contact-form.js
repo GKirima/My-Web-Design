@@ -1,4 +1,3 @@
-<script> 
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ DOM fully loaded and script is running");
 
@@ -61,4 +60,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-</script>
