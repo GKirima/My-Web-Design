@@ -40,51 +40,99 @@
 					</p>
 							<div style="overflow: hidden;">
 	<img src="images/EC2_CodePipeline.jpg" alt="EC2 CodePipeline"
-		style="width: 320px; height: auto; float: right; margin: 0 0 1.5em 2em; border-radius: 0.5em;" />
-
+		style="width: 420px; height: auto; float: right; margin: 0 0 1.5em 2em; border-radius: 0.5em;" />
 	<h2>Project 1</h2>
 	<h3>Automated EC2 Deployment Pipeline Using AWS CodePipeline and GitHub.</h3>
-	<p>- This project outlines an automated deployment pipeline using AWS CodePipeline, CodeDeploy, and GitHub to deliver application scripts to Amazon EC2 instances. This solution enables continuous delivery from a GitHub repository to Amazon EC2 instances with zero manual deployment steps.<br>
-	- The GitHub repository contains two critical files: These files are packaged together and passed through our deployment pipeline automatically. The compute layer has EC2 instances configured with AmazonSSMManagedInstanceCore for secure Systems Manager access and Inline policies that grant s3:GetObject access to retrieve artifacts.</p>
-	<p> - AWS CodePipeline orchestrates the flow - The CodePipeline service role has been updated with the required IAM permissions to integrate with GitHub, S3, CloudWatch Logs, and CodeDeploy. CodeDeploy: Locates the EC2 targets and deploys files to /home/ec2-user/testhelloworld and executes script.sh using the AfterInstall hook.<br>
-	- From the user’s perspective, the process is seamless:- Within minutes, the latest changes are deployed securely and automatically to production. This architecture enables secure, auditable, and repeatable deployments using AWS-native tools and promotes best practices in continuous delivery.<br>
-	Click on the Learn more button below to view the project details and implementation steps.</p>
-
+	<div style="font-family: Arial, sans-serif; font-size: 0.95em;">
+  <div style="margin-bottom: 0.5em;">
+    This project outlines an automated deployment pipeline using AWS CodePipeline, CodeDeploy, and GitHub to deliver application scripts to Amazon EC2 instances. This solution enables continuous delivery from a GitHub repository to Amazon EC2 instances with zero manual deployment steps.
+  </div>
+  <div style="margin-bottom: 0.5em;">
+    <strong style="color: #5c1515;">- The GitHub repository contains two critical files:</strong> These files are packaged together and passed through the deployment pipeline automatically. The compute layer has EC2 instances configured with <code>AmazonSSMManagedInstanceCore</code> for secure Systems Manager access and inline policies that grant <code>s3:GetObject</code> access to retrieve artifacts.
+  </div>
+  <div style="margin-bottom: 0.5em;">
+    <strong style="color: #5c1515;">- AWS CodePipeline orchestrates the flow:</strong> The CodePipeline service role has been updated with the required IAM permissions to integrate with GitHub, S3, CloudWatch Logs, and CodeDeploy. CodeDeploy locates the EC2 targets, deploys files to <code>/home/ec2-user/testhelloworld</code>, and executes <code>script.sh</code> using the <code>AfterInstall</code> hook.
+  </div>
+  <div style="margin-bottom: 0.5em;">
+    <strong style="color: #5c1515;">- From the user’s perspective, the process is seamless:</strong> Within minutes, the latest changes are deployed securely and automatically to production. This architecture enables secure, auditable, and repeatable deployments using AWS-native tools and promotes best practices in continuous delivery.
+  </div>
+  <div style="margin-top: 0.75em;">
+    Click on the <strong style="color: #5c1515;">Learn more</strong> button below to view the project details and implementation steps.
+  </div>
+</div>
 	<ul class="actions">
-		<li><a href="project1.html" class="button">Learn more</a></li>
+		<li><a href="https://gkirima.github.io/my-codepipeline-repo/" class="button" target="_blank">Learn more</a></li>
+
 	</ul>
 </div>
-
 						<br><div style="overflow: hidden;">
-	<img src="images/prof.jpg" alt="EC2 CodePipeline"
-		style="width: 220px; height: auto; float: left; margin: 0 2em 1.5em 0; border-radius: 0.5em;" />
+	<img src="images/phasethree.jpg" alt="Neural Climate"
+		style="width: 400px; height: auto; float: left; margin: 0 2em 1.5em 0; border-radius: 0.5em;" />
 
 	<h2>Project 2</h2>
-	<h3>Deploying a Secure 3-Tier Architecture in AWS.</h3>
-	<p>A practical implementation of a three-tier web architecture using Amazon VPC, EC2, RDS, and Load Balancer. This project focuses on high availability, network isolation, and secure access between tiers.</p>
+	<h3 style="display:inline; margin-right:10px;">Neural Climate:</h3>
+	<h4 style="display:inline;">Intelligent Cloud-Integrated HVAC System.</h4>
+	<p>Neural Climate is a smart, cloud-based HVAC system that integrates IoT, cloud computing, and machine learning to provide dynamic environmental monitoring and control. This system improves operational efficiency, reduces maintenance costs, and enhances energy savings for a variety of users.<br>
+		The system delivers real-time diagnostics, predictive analytics, and automation by integrating edge-based sensor networks with AWS cloud services—all while reducing energy consumption and maintenance costs.</p>
+	<h4 style="margin-bottom: 0.5em;">Infrastructure Flow</h4>
+<div style="margin-top: 0;">The following outlines how system components integrate and work together:</div>
+<div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; margin-top: 1.5em; font-family: Arial, sans-serif;">
+  <div style="flex: 1 1 45%; min-width: 300px;">
+    <div><strong style="color: #5c1515;">Edge Devices:</strong> Smart thermostats and environmental sensors collect real-time temperature, humidity, and occupancy data from buildings.</div>
+    <div><strong style="color: #5c1515;">AWS IoT Core:</strong> Manages device connectivity, authenticates devices, and streams telemetry to backend services.</div>
+    <div><strong style="color: #5c1515;">Amazon S3 and DynamoDB:</strong> S3 archives ML artifacts, logs, reports, and backups, while DynamoDB stores time-series sensor data for analytics and historical visualization.</div>
+  </div>
+  <div style="flex: 1 1 45%; min-width: 300px;">
+    <div><strong style="color: #5c1515;">IoT Gateway:</strong> Serves as a communication bridge, transmitting encrypted sensor data to the cloud via MQTT.</div>
+    <div><strong style="color: #5c1515;">AWS Lambda and CloudWatch:</strong> Lambda processes incoming data, triggers workflows like threshold alerts, and formats input for ML; CloudWatch aggregates logs, monitors metrics, and sends alerts for system health.</div>
+    <div><strong style="color: #5c1515;">Amazon SageMaker:</strong> Trains and deploys ML models to predict system faults, optimize temperature settings, and detect energy inefficiencies.</div>
+  </div>
+</div>
+<div style="margin-top: 1em;">
+  Click on the <strong style="color: #5c1515;">Learn more</strong> button below to see in-depth details on how the system was designed, implemented, and how each component contributes to its overall functionality.
+</div>
 	<ul class="actions">
-		<li><a href="Project2.html" class="button">Learn more</a></li>
+		<li><a href="https://gkirima.github.io/Neural_Climate_Project/" class="button" target="_blank" rel="noopener">Learn more</a></li>
+
 	</ul>
 </div>
 
-							<br><br>
-							<div style="overflow: hidden;">
+							<!--<br><br>
+							<div style="overflow: hidden;">-->
 	<h2>Project 3</h2>
-	<h3>Project 3: Migrating a Legacy Architecture to AWS.</h3>
+	<h3>SmartDeploy: Automated CI/CD Pipeline with GitHub, Jenkins & CodeDeploy</h3>
 
-	<img src="images/logo.jpg" alt="EC2 CodePipeline"
-		style="width: 220px; height: auto; float: right; margin: 0 0 1.5em 2em; border-radius: 0.5em;" />
+	<img src="images/jenkinspipeline.jpg" alt="Jenkins CodePipeline"
+		style="width: 380px; height: auto; float: right; margin: 0 0 1.5em 2em; border-radius: 0.5em;" />
 
 	<p>
-		This project involves migrating a legacy architecture to AWS, focusing on re-architecting for cloud-native services, optimizing costs, and ensuring data integrity during the migration process.<br>
-		It outlines a step-by-step process for analyzing, planning, and migrating legacy infrastructure to the AWS Cloud. It covers rehosting (lift-and-shift), storage migration, and network configuration for minimal downtime.
+		SmartDeploy is a scalable, four-stage CI/CD pipeline that automates the journey from source code to a live staging environment. It orchestrates the full software delivery cycle—triggering builds from GitHub, compiling via Jenkins, and deploying seamlessly with AWS CodeDeploy.<br>
+		This project demonstrates a practical implementation of continuous integration and delivery by orchestrating GitHub, Jenkins, AWS CodePipeline, and CodeDeploy into a cohesive automation workflow.
 	</p>
+	<h4 style="margin-bottom: 0.5em;">Pipeline Architecture</h4>
+<div style="font-family: Arial, sans-serif; font-size: 0.95em;">
+  <div style="margin-bottom: 0.5em;">
+    <strong style="color: #5c1515;">Source (GitHub):</strong>
+    Developers push code to a GitHub repository, which automatically triggers the pipeline. Webhooks ensure real-time updates to CodePipeline.
+  </div>
+  <div style="margin-bottom: 0.5em;">
+    <strong style="color: #5c1515;">Build (Jenkins):</strong>
+    Jenkins, configured as a custom build provider in AWS CodePipeline, pulls the latest code, runs unit tests, and packages the application. The build artifacts are then archived and pushed to Amazon S3.
+  </div>
+  <div style="margin-bottom: 0.5em;">
+    <strong style="color: #5c1515;">Deploy (CodeDeploy):</strong>
+    AWS CodeDeploy takes the packaged build and deploys it to a staging EC2 environment. The deployment group uses the CodeDeploy agent and application specification files (<code>appspec.yml</code>) to manage lifecycle events like <code>BeforeInstall</code> and <code>AfterInstall</code>.
+  </div>
+  <div>
+    <strong style="color: #5c1515;">Staging Environment:</strong>
+    The EC2 instance(s) in the staging environment are pre-configured with CodeDeploy agents and monitored through AWS CloudWatch to ensure successful deployments.
+  </div>
+</div>
+
 	<ul class="actions">
 		<li><a href="project3.html" class="button">Learn more</a></li>
 	</ul>
 </div>
-
-
 		<!-- Footer -->
 		<footer id="footer" class="wrapper style1-alt">
 			<div class="inner">
