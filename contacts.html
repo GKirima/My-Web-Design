@@ -64,7 +64,8 @@
   </div>
 
   <ul class="actions">
-    <li><button type="submit" class="button submit">Send Message</button></li>
+    <li><button type="submit" class="button submit">Send Message</button>
+</li>
   </ul>
 </form>
 								</section>
@@ -124,6 +125,13 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<!-- reCAPTCHA callback -->
+<script>
+  function onSubmit(token) {
+    document.getElementById("contact-form").submit();
+  }
+</script>
 		
 
 </body>
