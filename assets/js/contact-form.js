@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     grecaptcha.ready(function () {
       grecaptcha.execute("6LcQR3crAAAAAJCf6JyOTxdlzI5SBzIc2N-pCgrv", { action: "contact" }).then(async function (recaptchaToken) {
         try {
-          const response = await fetch("https://0kazt94ly1.execute-api.us-west-2.amazonaws.com/production/MySESLambda", {
+          const response = await fetch("https://0kazt94ly1.execute-api.us-west-2.amazonaws.com/production", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name, email, message, recaptchaToken })
