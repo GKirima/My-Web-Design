@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     grecaptcha.enterprise.ready(function () {
       grecaptcha.enterprise.execute("6LfRkXgrAAAAAIt-AFeQd0HeoDnG9VsxSkvp123Z", { action: "contact" }).then(async function (recaptchaToken) {
-        console.log("reCAPTCHA token (Enterprise):", recaptchaToken);
+        console.log("📦 Payload:", { name, email, message, recaptchaToken });
         if (!recaptchaToken) {
           alert("reCAPTCHA verification failed. Please reload the page and try again.");
           return;
