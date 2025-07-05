@@ -1,6 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("submit-btn").addEventListener("click", async function () {
-    const name = document.getElementById("name").value.trim();
+   
+
+    if (typeof grecaptcha === "undefined" || !grecaptcha.enterprise) {
+      alert("reCAPTCHA is not loaded. Please refresh the page and try again.");
+      return;
+    }
+
+    grecaptcha.enterprise.ready(function () {
+      grecaptcha.enterprise.execute("6LfRkXgrAAAAAIt-AFeQd0HeoDnG9VsxSkvp123Z", { action: "contact" }).then(async function (recaptchaToken) {
+        if (!recaptchaToken) {
+          alert("reCAPTCHA verification failed. Please reload the page and try again.");
+          return;
+        }
+         const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const message = document.getElementById("message").value.trim();
 
@@ -15,18 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (typeof grecaptcha === "undefined" || !grecaptcha.enterprise) {
-      alert("reCAPTCHA is not loaded. Please refresh the page and try again.");
-      return;
-    }
-
-    grecaptcha.enterprise.ready(function () {
-      grecaptcha.enterprise.execute("6LfRkXgrAAAAAIt-AFeQd0HeoDnG9VsxSkvp123Z", { action: "contact" }).then(async function (recaptchaToken) {
-        if (!recaptchaToken) {
-          alert("reCAPTCHA verification failed. Please reload the page and try again.");
-          return;
-        }
-
         const payload = { name, email, message, recaptchaToken };
         console.log("📦 Final payload:", { name, email, message, recaptchaToken });
 
@@ -35,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const response = await fetch("https://0kazt94ly1.execute-api.us-west-2.amazonaws.com/production", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, email, message, recaptchaToken })
+            body: JSON.stringify(payload),
           });
 
           const result = await response.json();
