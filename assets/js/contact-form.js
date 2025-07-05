@@ -28,13 +28,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const payload = { name, email, message, recaptchaToken };
-        console.log("📦 Sending payload:", payload);
+        console.log("📦 Final payload:", { name, email, message, recaptchaToken });
+
 
         try {
           const response = await fetch("https://0kazt94ly1.execute-api.us-west-2.amazonaws.com/production", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
+            body: JSON.stringify({ name, email, message, recaptchaToken })
           });
 
           const result = await response.json();
