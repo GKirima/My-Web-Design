@@ -80,36 +80,117 @@
 			</ul>
 		</div>
 	</footer>
- <a href="aria-chat.html" target="_blank" id="aria-chat-btn" style="
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 60px;
-        height: 60px;
-        background: #6B46C1;
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        font-size: 24px;
-        z-index: 1000;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        opacity: 0;
-        transform: scale(0.8);
-        transition: all 0.3s ease;
-    ">💬</a>
-	<script>
-        // Pop-up animation when page loads
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                const chatBtn = document.getElementById('aria-chat-btn');
-                chatBtn.style.opacity = '1';
-                chatBtn.style.transform = 'scale(1)';
-            }, 1000); // Appears 1 second after page loads
-        });
-    </script>
+<!-- ARIA Chat Widget -->
+<button id="chat-toggle">💬</button>
+<div id="chat-widget">
+    <div id="chat-header">
+        <div>
+            <strong>ARIA</strong>
+            <div style="font-size: 12px;">AI Customer Assistant</div>
+        </div>
+        <button class="close-btn" onclick="toggleChat()">×</button>
+    </div>
+    <div id="chat-messages">
+        <div class="message aria-message">
+            Hi! I'm ARIA, your AI assistant. How can I help you today?
+        </div>
+    </div>
+    <div id="chat-input-container">
+        <input type="text" id="chat-input" placeholder="Type your message..." />
+        <button id="send-btn" onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+const WEBSOCKET_URL = 'wss://kjcaxdqw76.execute-api.us-west-2.amazonaws.com/production';
+let socket = null;
+let isConnected = false;
+
+function toggleChat() {
+    const widget = document.getElementById('chat-widget');
+    const toggle = document.getElementById('chat-toggle');
+    
+    if (widget.style.display === 'none' || widget.style.display === '') {
+        widget.style.display = 'flex';
+        toggle.style.display = 'none';
+        connectWebSocket();
+    } else {
+        widget.style.display = 'none';
+        toggle.style.display = 'block';
+        disconnectWebSocket();
+    }
+}
+
+function connectWebSocket() {
+    if (socket && socket.readyState === WebSocket.OPEN) return;
+    
+    socket = new WebSocket(WEBSOCKET_URL);
+    
+    socket.onopen = function() {
+        console.log('Connected to ARIA');
+        isConnected = true;
+    };
+    
+    socket.onmessage = function(event) {
+        const data = JSON.parse(event.data);
+        addMessage(data.content || data.message, 'aria');
+    };
+    
+    socket.onclose = function() {
+        console.log('Disconnected from ARIA');
+        isConnected = false;
+    };
+    
+    socket.onerror = function(error) {
+        console.error('WebSocket error:', error);
+        addMessage('Connection error. Please try again.', 'aria');
+    };
+}
+
+function disconnectWebSocket() {
+    if (socket) {
+        socket.close();
+        socket = null;
+        isConnected = false;
+    }
+}
+
+function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const message = input.value.trim();
+    
+    if (!message || !isConnected) return;
+    
+    addMessage(message, 'user');
+    
+    socket.send(JSON.stringify({
+        action: 'sendmessage',
+        message: message
+    }));
+    
+    input.value = '';
+}
+
+function addMessage(message, sender) {
+    const messagesDiv = document.getElementById('chat-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${sender}-message`;
+    messageDiv.textContent = message;
+    messagesDiv.appendChild(messageDiv);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('chat-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+    
+    document.getElementById('chat-toggle').onclick = toggleChat;
+});
+</script>
+
 				
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
