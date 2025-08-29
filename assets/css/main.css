@@ -3906,3 +3906,106 @@ input, select, textarea {
 
 		}
 
+<!-- ARIA Chat Widget Styles -->
+<style>
+#chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+#chat-header {
+    background: #6B46C1;
+    color: white;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 350px;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 80%;
+}
+
+.user-message {
+    background: #E5E7EB;
+    margin-left: auto;
+    text-align: right;
+}
+
+.aria-message {
+    background: #F3E8FF;
+    margin-right: auto;
+}
+
+#chat-input-container {
+    padding: 15px;
+    border-top: 1px solid #E5E7EB;
+    display: flex;
+    gap: 10px;
+}
+
+#chat-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #D1D5DB;
+    border-radius: 20px;
+    outline: none;
+}
+
+#send-btn {
+    background: #6B46C1;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #6B46C1;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 1001;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+</style>
+
+
+
+
+
