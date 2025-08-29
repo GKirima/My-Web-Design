@@ -80,7 +80,37 @@
 			</ul>
 		</div>
 	</footer>
-
+ <a href="aria-chat.html" target="_blank" id="aria-chat-btn" style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: #6B46C1;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-size: 24px;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.3s ease;
+    ">💬</a>
+	<script>
+        // Pop-up animation when page loads
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const chatBtn = document.getElementById('aria-chat-btn');
+                chatBtn.style.opacity = '1';
+                chatBtn.style.transform = 'scale(1)';
+            }, 1000); // Appears 1 second after page loads
+        });
+    </script>
+				
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>
